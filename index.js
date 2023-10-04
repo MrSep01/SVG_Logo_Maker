@@ -8,7 +8,7 @@ const generateSVG = (text, textColor, shape, shapeColor) => {
   
   switch (shape) {
     case 'Circle':
-      shapeInstance = new Circle(150, 100, 80, shapeColor);s
+      shapeInstance = new Circle(150, 100, 80, shapeColor);
       break;
     case 'Triangle':
       shapeInstance = new Triangle(150, 50, 160, shapeColor);
