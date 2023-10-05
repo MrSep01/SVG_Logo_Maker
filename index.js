@@ -1,11 +1,13 @@
+// Import necessary modules
 const inquirer = require('inquirer');
 const fs = require('fs').promises;
 const { Circle, Triangle, Square } = require('./lib/shapes');
 
-
+// Function to generate SVG based on user input
 const generateSVG = (text, textColor, shape, shapeColor) => {
-  let shapeInstance;
-  
+  let shapeInstance; // Variable to hold the shape instance
+
+  // Switch statement for initializing the correct shape class
   switch (shape) {
     case 'Circle':
       shapeInstance = new Circle(150, 100, 80, shapeColor);
@@ -20,6 +22,7 @@ const generateSVG = (text, textColor, shape, shapeColor) => {
       break;
   }
 
+  // Return the SVG string
   return `
     <svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
       ${shapeInstance.render(text, textColor)}
@@ -27,9 +30,10 @@ const generateSVG = (text, textColor, shape, shapeColor) => {
   `;
 };
 
-
+// Main asynchronous function to execute the script
 const main = async () => {
   try {
+    // Use inquirer to gather user inputs
     const { text, textColor, shape, shapeColor } = await inquirer.prompt([
       {
         type: 'input',
@@ -55,13 +59,19 @@ const main = async () => {
       }
     ]);
 
+    // Generate SVG based on the collected user input
     const svgString = generateSVG(text, textColor, shape, shapeColor);
 
+    // Write the SVG to a file
     await fs.writeFile('logo.svg', svgString);
+
+    // Inform the user that the file has been generated
     console.log('Generated logo.svg');
   } catch (err) {
+    // Handle errors and display them
     console.error(err);
   }
 };
 
+// Invoke the main function
 main();
