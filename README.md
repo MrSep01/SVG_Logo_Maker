@@ -68,7 +68,7 @@ Run the application from the command line and follow the prompts to generate you
 
 ## Demo 
 Watch the app demo:
-[Demo Video]()
+[Demo Video](https://youtu.be/FCC-HmN_Vmo)
 
 ## Conclusion 🏁
 
